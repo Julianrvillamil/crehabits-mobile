@@ -12,13 +12,19 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import { useRouter } from "next/navigation";
 
 export default function AlarmasPage() {
   const [open, setOpen] = useState(false);
   const [alarmName, setAlarmName] = useState("");
+  const router = useRouter();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleAccept = () => {
+    router.push("/alarmas/crear-alarma"); // Redirige a la selección de hora
+  };
 
   return (
     <Box
@@ -98,6 +104,7 @@ export default function AlarmasPage() {
                 fontWeight: "bold",
                 "&:hover": { backgroundColor: "#E68A38" },
               }}
+              onClick={handleAccept}
             >
               Aceptar
             </Button>
