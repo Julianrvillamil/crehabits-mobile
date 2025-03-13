@@ -41,7 +41,7 @@ export default function ConfigurarAlarma() {
       vibrar: vibration,
       categoria: category ? "Sí" : "No",
     });
-    router.push("/alarmas");
+    router.push("/new-alarmas");
   };
 
   return (
