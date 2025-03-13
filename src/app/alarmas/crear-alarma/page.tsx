@@ -18,7 +18,7 @@ export default function CrearAlarma() {
 
   const handleConfirm = () => {
     console.log("Hora seleccionada:", selectedTime?.format("hh:mm A"));
-    router.push("/alarmas"); // Redirigir a la lista de alarmas
+    router.push("/alarmas/configurar-alarma"); 
   };
 
   return (
