@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CreHabits Mobile
 
-## Getting Started
+Este es un proyecto móvil desarrollado con [Next.js](https://nextjs.org/) y Capacitor para ejecutarse como una aplicación híbrida en dispositivos Android.
 
-First, run the development server:
+## 🚀 **Cómo ejecutar el proyecto**
+
+### 🔧 **Modo Desarrollo (Web)**
+
+Para ejecutar el proyecto en modo desarrollo en el navegador:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install  # Instalar dependencias
+npm run dev  # Iniciar el servidor local
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000/) en tu navegador para ver la aplicación.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 📱 **Ejecutar en Dispositivo o Emulador (Android)**
 
-## Learn More
+Este proyecto usa **Capacitor** para ejecutar la aplicación en Android.
 
-To learn more about Next.js, take a look at the following resources:
+### **1️⃣ Agregar la Plataforma Android**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Si aún no se ha agregado Android al proyecto, corre:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx cap add android
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### **2️⃣ Construir y Copiar los Archivos Web**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Antes de ejecutar en un dispositivo, debes compilar el proyecto:
+
+```bash
+npm run build  # Genera los archivos optimizados para producción
+npx cap copy   # Copia los archivos web a la plataforma nativa (Android)
+
+```
+
+### **3️⃣ Abrir en Android Studio**
+
+Para abrir el proyecto en Android Studio y ejecutarlo en un emulador o dispositivo:
+
+```bash
+npx cap open android
+
+```
+
+Desde Android Studio puedes:
+
+- Ejecutarlo en un **Emulador**.
+- Conectar un **Dispositivo Android** y ejecutarlo ahí.
+
+---
+
+### 📦 **Generar el APK**
+
+Para obtener el APK instalable:
+
+```bash
+cd android  # Ir a la carpeta de Android
+./gradlew assembleDebug  # Generar el APK en modo debug
+
+```
+
+El APK generado estará en:
+
+```
+android/app/build/outputs/apk/debug/app-debug.apk
+
+```
+
+Si deseas un APK para producción:
+
+```bash
+./gradlew assembleRelease
+
+```
+
+APK de release estará en:
+
+```
+android/app/build/outputs/apk/release/app-release.apk
+
+```
+
+---
+
+### 📲 **Instalar el APK en un Dispositivo Android**
+
+Si deseas probar la aplicación en un teléfono sin usar Android Studio, conecta tu dispositivo y ejecuta:
+
+```bash
+adb install android/app/build/outputs/apk/debug/app-debug.apk
+
+```
+
+Si **no tienes ADB**, simplemente copia el archivo APK a tu dispositivo y ábrelo desde un explorador de archivos.
+
+---
+
+## 📖 **Más Información**
+
+Para aprender más sobre las tecnologías usadas en este proyecto:
+
+- [Documentación de Next.js](https://nextjs.org/docs)
+- [Documentación de Capacitor](https://capacitorjs.com/docs)
+- [Documentación de Android Studio](https://developer.android.com/studio)
